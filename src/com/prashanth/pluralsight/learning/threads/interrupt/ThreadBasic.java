@@ -1,4 +1,4 @@
-package com.prashanth.pluralsight.learning.threads;
+package com.prashanth.pluralsight.learning.threads.interrupt;
 
 import java.util.concurrent.TimeUnit;
 
