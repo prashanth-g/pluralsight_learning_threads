@@ -25,5 +25,36 @@ public class CompletableFutureFlow {
         });
 
         System.out.println(orderFlow.get());
+
+        CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                //
+            }
+            return "CF1 Completed";
+        });
+
+        CompletableFuture<String> cf2 = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                //
+            }
+            return "CF2 Completed";
+        });
+
+        CompletableFuture<String> cf3 = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                //
+            }
+            return "CF3 Completed";
+        });
+
+        CompletableFuture<Object> anyOfFuture = CompletableFuture.anyOf(cf1, cf2, cf3);
+
+        System.out.println(anyOfFuture.get());
     }
 }
